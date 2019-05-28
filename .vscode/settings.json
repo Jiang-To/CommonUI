@@ -1,0 +1,20 @@
+{
+  /* CommonUI Client*/
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue"
+  ],
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      // Prettier option here
+      "semi": true,
+      "singleQuote": true
+    }
+  },
+  /* CommonUI Server*/
+  "csharp.format.enable": false,
+  "csharpfixformat.style.spaces.beforeParenthesis": false,
+  "csharpfixformat.style.spaces.afterParenthesis": false,
+  "csharpfixformat.style.newline.elseCatch": true
+}
