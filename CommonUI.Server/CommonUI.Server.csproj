@@ -3,11 +3,29 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <ClientRoot>..\CommonUI.Client\</ClientRoot>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
+  
+  
+  <!-- MS Build -->
+  <Target Name="PublishClient" AfterTargets="ComputeFilesToPublish ">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->  
+    <Exec WorkingDirectory="$(ClientRoot)" Command="npm install"/>
+    <Exec WorkingDirectory="$(ClientRoot)" Command="npm run build"/>
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(ClientRoot)dist\**\*" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>wwwroot\%(RecursiveDir)%(Filename)%(Extension)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 
 </Project>

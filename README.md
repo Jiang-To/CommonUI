@@ -18,7 +18,8 @@
     - [DEV] Host by IIS  
     - [DEV] Host by Windows Service  
     - [DEV] Host by Docker  
-    - [DEV] Integrate Client publish with command `dotnet build` and/or `dotnet publish`
+    - [DEV] Integrate Client publish with command with `dotnet build`
+    - ✔ ~~[DEV] Integrate Client publish with command with`dotnet publish`~~
     - [PRD] Windows Authentication when host by IIS  
     - [PRD] Windows Authentication when host by Windows Service  
     - [PRD] Windows Authentication when host by Docker
