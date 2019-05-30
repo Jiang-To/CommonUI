@@ -2,7 +2,7 @@
 This is the short guideline to get started quickly
 
 # Integrated Development Mode
-Under integrated mode, the developer can only simply press `F5` to get started. VS code shall build server-side code and serve it under a backend process with config placed in `launchSettings.json` with property `"commandName": "Project"`.   
+Under integrated mode, you can only simply press `F5` to get started. VS code shall build server-side code and serve it under a backend process with config placed in `launchSettings.json` has property `"commandName": "Project"`.   
 * file location of `launchSettings.json`
   >  CommonUI.Server  
     &nbsp;&nbsp;&nbsp;&nbsp; \| -- Properties  
@@ -20,10 +20,10 @@ Under integrated mode, the developer can only simply press `F5` to get started. 
     } 
     ``` 
 
-At the same time, VS code will boot up a webpack dev server for client-side. Code changes on client-side will almost real-time show on the page http://localhost:5000 which called [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement). 
-The underlying mechanism is when server-side starting up it runs script `npm run serve` under client-side folder triggered by below code snippet placed in `Startup.cs`.  
+At the same time, VS code will boot up a webpack dev server for client-side. Code changes on client-side will almost real-time shows on the page http://localhost:5000 which called [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement). 
+The underlying mechanism is when server-side starting up, it runs script `npm run serve` under client-side root folder triggered by below code snippet placed in `Startup.cs`.  
 
-* when environment setting is development
+* when sever runs under development environment
     ```csharp
     app.UseSpa(spa => {
         spa.Options.SourcePath = @"..\CommonUI.Client";
@@ -32,7 +32,7 @@ The underlying mechanism is when server-side starting up it runs script `npm run
     ```
 
 # Separate Development Mode 
-under this mode, the developer need to start up client-side dev server manually by command line or Vue UI.
+under this mode, you need to start up client-side dev server manually by command line or Vue UI. The way of Sever-side startup remains no change(Press `F5` in VS code).
 * Using Command line  
 start command line at `CommonUI.Client` and run `npm run serve`
     
