@@ -28,7 +28,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/CommonUi.Server/bin/Debug/netcoreapp2.2/CommonUI.Server.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/CommonUi.Server",
             "console": "internalConsole",
             "stopAtEntry": false
         },
