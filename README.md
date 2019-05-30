@@ -1,5 +1,7 @@
 # CommonUI
-### POC To-do List
+Example for Asp.net Core Web
+
+# POC To-do List
 * Project
     - ✔ ~~[DEV] setup recommand VS code extension list in workspace setting~~
     - ✔ ~~[DEV] setup project folder structure~~ (TBC)
@@ -23,3 +25,7 @@
     - [PRD] Windows Authentication when host by IIS  
     - [PRD] Windows Authentication when host by Windows Service  
     - [PRD] Windows Authentication when host by Docker
+
+# Known Issues
+* Integrated development mode (press `F5` in VS code) makes VS code slow response and random ouccrs proxy error
+    - [recommand] serve client and server into different terminal
