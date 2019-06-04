@@ -19,10 +19,11 @@
       "singleline": "never",
       "multiline": {
         "objects": "ignore",
-        "arrays": "always",
+        "arrays": "ignore",
         "functions": "never",
         "typeLiterals": "ignore"
       }
-    }]
+    }],
+    "member-access":[true, "no-public"]
   }
 }
