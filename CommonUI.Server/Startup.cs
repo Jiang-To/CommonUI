@@ -25,6 +25,10 @@ namespace CommonUI.Server {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+            
+            // add config
+            var appConfig = new AppConfig(Configuration);
+            services.AddSingleton<AppConfig>(appConfig);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

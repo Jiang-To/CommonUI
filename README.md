@@ -50,3 +50,7 @@ https://github.com/SimonZhangITer/vue-typescript-dpapp-demo
 https://juejin.im/post/5c173a84f265da610e7ffe44
 https://taylorchen709.github.io/vue-admin/#/table
 https://github.com/PanJiaChen/vue-element-admin/tree/master/src
+
+# Authorization 
+https://www.tpeczek.com/2019/01/aspnet-core-middleware-and-authorization.html
+https://stackoverflow.com/questions/53292286/is-there-a-way-to-add-claims-in-an-asp-net-core-middleware-after-authentication
