@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CommonUI.Server.Config;
+using CommonUI.Server.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Server.HttpSys;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,12 +26,21 @@ namespace CommonUI.Server {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+            //  
+            services.AddMvc(options => {
+                options.OutputFormatters.RemoveType<TextOutputFormatter>();
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
-            // add config
+            // add windows authentication service
+            services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+
+            // add response compression
+            services.AddResponseCompression();
+
+            // add logger service
             var appConfig = new AppConfig(Configuration);
             services.AddSingleton<AppConfig>(appConfig);
+            services.AddLogger(appConfig);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,9 +60,13 @@ namespace CommonUI.Server {
             }
 
             // app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseDefaultFiles();
+            app.UseResponseCompression();
+            
             app.UseStaticFiles();
+            app.UseDefaultFiles();
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseMvc();
         }
     }
